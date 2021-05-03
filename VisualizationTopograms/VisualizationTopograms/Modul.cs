@@ -68,7 +68,11 @@ namespace VisualizationTopograms
         {
             int min = minimum;
             int max = minimum + TFwidth;
-            int ExeptionStoper = (max - min) != 0 ? (max - min) : 1;
+            int ExceptionStoper = 0;
+            if (max - min != 0)
+                ExeptionStoper = max - min;
+            else
+                ExceptionStoper = 1;
             int newVal = Clamp((value - min) * 255 / (ExeptionStoper), 0, 255);
             return Color.FromArgb(255, newVal, newVal, newVal);
         }
